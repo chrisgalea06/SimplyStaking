@@ -1,0 +1,20 @@
+# Part 2: Node.js Server
+
+Create a Node.js Express backend server that handles a POST request /faucet accepting
+parameters for a CosmosHub address and an Ethereum address. The server performs the following
+tasks:
+● Stores the private key used to deploy the smart contract from Part 1 in a text file
+● Listens for POST requests to /faucet with a body containing an Ethereum address and a
+CosmosHub address.
+● Validates if the CosmosHub address is a Simply Staking delegator by querying the Cosmos Hub
+Api (not mintscan) through a public REST endpoint which can be found here. Important to
+choose REST and not RPC.
+You can also use:
+https://spectrum-01.simplystaking.xyz/cosmos/mainnet/lhgwTP39mKNxkg
+● Checks the ERC20 smart contract to determine if a claim has already been made for the
+provided CosmosHub address.
+● Returns an error if a claim has already been made for the CosmosHub address or if the address
+is not a delegator.
+● If eligible, calls the faucet function in the ERC20 smart contract using Ethers.js, using the stored
+private key, to transfer tokens to the provided Ethereum address and returns the transaction
+hash.
