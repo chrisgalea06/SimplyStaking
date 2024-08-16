@@ -1,9 +1,9 @@
-import { Router } from "express";
-import { handleFaucetRequest } from "./controller";
+const express = require("express");
+const { handleFaucetRequest } = require("./controller.js");
 
-const router = Router();
+const router = express.Router();
 
 // POST request to /faucet
-router.post("/", handleFaucetRequest);
+router.post("/faucet", handleFaucetRequest);
 
-export default router;
+module.exports = router;

@@ -1,25 +1,41 @@
-// cosmosService.js
+const axios = require("axios");
 
-import axios from "axios";
+// Base URL for Simply Staking API
+const simplyStakingBaseUrl =
+  "https://spectrum-01.simplystaking.xyz/cosmos/mainnet/lhgwTP39mKNxkg/cosmos/staking/v1beta1";
 
-// Endpoint URL to check if an address is a Simply Staking delegator
-const simplyStakingUrl =
-  "https://spectrum-01.simplystaking.xyz/cosmos/mainnet/lhgwTP39mKNxkg";
-
-export async function isDelegator(cosmosHubAddress) {
+// Function to check if the delegator is associated with "Simply Staking" validator
+async function isDelegator(cosmosHubAddress) {
   try {
-    // Perform GET request to the Simply Staking API
-    const response = await axios.get(simplyStakingUrl);
+    // Construct URL for fetching delegations
+    const delegationUrl = `${simplyStakingBaseUrl}/delegations/${cosmosHubAddress}`;
 
-    // Parse the response
-    const delegators = response.data.delegators || [];
+    // Perform GET request to fetch delegations
+    const delegationResponse = await axios.get(delegationUrl);
+    const delegationData = delegationResponse.data;
 
-    // Check if the address is in the list of delegators
-    const isDelegator = delegators.includes(cosmosHubAddress);
+    // Extract validator address
+    if (
+      !delegationData.delegation_responses ||
+      delegationData.delegation_responses.length === 0
+    ) {
+      throw new Error("No delegations found for this address.");
+    }
 
-    return isDelegator;
+    let found = false;
+    const SimplyStakingAddress =
+      "cosmosvaloper124maqmcqv8tquy764ktz7cu0gxnzfw54n3vww8";
+
+    delegationData.delegation_responses.forEach((delegation) => {
+      if (delegation.delegation.validator_address == SimplyStakingAddress)
+        found = true;
+    });
+
+    return found;
   } catch (error) {
     console.error("Error querying Simply Staking API:", error);
     throw new Error("Failed to validate delegator status.");
   }
 }
+
+module.exports = { isDelegator };

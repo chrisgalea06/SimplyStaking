@@ -18,3 +18,9 @@ is not a delegator.
 ● If eligible, calls the faucet function in the ERC20 smart contract using Ethers.js, using the stored
 private key, to transfer tokens to the provided Ethereum address and returns the transaction
 hash.
+
+
+# Notes
+
+1. Query this: https://spectrum-01.simplystaking.xyz/cosmos/mainnet/lhgwTP39mKNxkg/cosmos/staking/v1beta1/validators
+2. 

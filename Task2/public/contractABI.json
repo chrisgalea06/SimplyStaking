@@ -5,11 +5,6 @@
         "internalType": "address",
         "name": "initialOwner",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "initialSupply",
-        "type": "uint256"
       }
     ],
     "stateMutability": "nonpayable",
@@ -195,6 +190,25 @@
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "cosmosHubAddress",
+        "type": "string"
+      }
+    ],
+    "name": "addressClaimed",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "owner",
         "type": "address"
@@ -260,6 +274,25 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "cosmosHubClaims",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "decimals",
     "outputs": [
@@ -276,31 +309,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "ethereumToCosmosHub",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "cosmosHubAddress",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "isClaimed",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "to",
+        "name": "recipient",
         "type": "address"
       },
       {
@@ -312,19 +321,6 @@
     "name": "faucet",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "faucetAmount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -390,12 +386,12 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "recipient",
+        "name": "to",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "value",
         "type": "uint256"
       }
     ],
@@ -448,6 +444,19 @@
       }
     ],
     "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "cosmosHubAddress",
+        "type": "string"
+      }
+    ],
+    "name": "transferToAssociatedAddress",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
