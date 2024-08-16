@@ -3,8 +3,6 @@ const { isDelegator } = require("./services/cosmosService");
 const path = require("path");
 const fs = require("fs");
 
-// Initialize the wallet and contract using environment variables for security
-
 const publicFolderPath = path.resolve(__dirname, "..", "public");
 
 let privateKey;
@@ -49,6 +47,7 @@ async function handleFaucetRequest(req, res) {
       );
     }
 
+    // Check if the comosAddress is already claimed
     const isClaimed = await contract.addressClaimed(cosmosAddress);
     if (isClaimed) {
       throw new Error(`CosmosHub address ${cosmosAddress} is already claimed.`);
@@ -57,6 +56,8 @@ async function handleFaucetRequest(req, res) {
     // Execute the faucet function and wait for the transaction to be mined
     const tx = await contract.faucet(ethAddress, cosmosAddress);
     const receipt = await tx.wait();
+
+    // successfull receipt
     if (receipt.status === 1) {
       res.status(200).json({
         message: "Faucet request successful",
@@ -69,7 +70,6 @@ async function handleFaucetRequest(req, res) {
       });
     }
   } catch (error) {
-    // Log the error and return a 500 status with an error message
     console.error("Error handling faucet request:", error);
     res
       .status(500)

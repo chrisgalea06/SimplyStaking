@@ -14,7 +14,6 @@ async function isDelegator(cosmosHubAddress) {
     const delegationResponse = await axios.get(delegationUrl);
     const delegationData = delegationResponse.data;
 
-    // Extract validator address
     if (
       !delegationData.delegation_responses ||
       delegationData.delegation_responses.length === 0

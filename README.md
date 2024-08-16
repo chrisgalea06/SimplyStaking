@@ -1,59 +1,50 @@
-# SimplyStaking
-
-Task given for SimplyStaking Interview.
-
 # Task Description
 
-This task involves building a simple end-to-end blockchain application where users can interact with
-Ethereum and CosmosHub networks. From a frontend, users input a CosmosHub wallet address,
-specifically belonging to a Simply Staking delegator on the CosmosHub Mainnet, and connect their
-Metamask wallet to receive a new FaucetToken. Upon interaction, a Node.js backend verifies the
-provided CosmosHub address, ensuring it belongs to a delegator. If validated, the backend, equipped
-with the private key of the FaucetToken smart contract deployer, facilitates token transfer to the user's
-Ethereum address. This process ensures each CosmosHub address links uniquely to an Ethereum
-destination, forming a secure and streamlined blockchain interaction flow.
+This task involves building a simple end-to-end blockchain application where users can interact with Ethereum and CosmosHub networks. From a frontend, users input a CosmosHub wallet address, specifically belonging to a Simply Staking delegator on the CosmosHub Mainnet, and connect their MetaMask wallet to receive a new FaucetToken. Upon interaction, a Node.js backend verifies the provided CosmosHub address, ensuring it belongs to a delegator. If validated, the backend, equipped with the private key of the FaucetToken smart contract deployer, facilitates token transfer to the user's Ethereum address. This process ensures each CosmosHub address links uniquely to an Ethereum destination, forming a secure and streamlined blockchain interaction flow.
 
-# Notes
+# Deployment Steps
 
-## Ethereum and Solidity
+1. **Copy the Contract into Remix IDE:**
 
-Ethereum: A blockchain platform that allows developers to create decentralized applications (dApps) using smart contracts.
-Solidity: The programming language used to write smart contracts on Ethereum. Developers can use an online tool called Remix to write and deploy these contracts.
+   - Open [Remix IDE](https://remix.ethereum.org/).
+   - Paste your smart contract code into Remix.
 
-## Mainnet and Testnet
+2. **Compile the Contract and Deploy:**
 
-Mainnet: The main Ethereum network where real funds are used.
-Testnet: A simulation network for testing and developing applications without using real cryptocurrency. Developers can get free tokens for testing from tools called faucets.
+   - Compile the contract within Remix.
+   - Deploy the contract using a MetaMask Ethereum address.
 
-## Faucets
+3. **Update Contract Information:**
 
-Faucet: A tool that provides free tokens on a blockchain’s testnet to help developers test their applications without spending real money.
+   - Copy the contract address into `task2/app/controller.js`.
+   - Copy the contract ABI into `task2/public/contractABI.json`.
 
-## CosmosHub and Proof-of-Stake
+4. **Provide Private Key:**
 
-CosmosHub: A blockchain platform using Proof-of-Stake (PoS) consensus, where validators lock tokens to validate blocks.
-Delegators: Users who stake their tokens with validators on PoS networks like CosmosHub. They earn rewards based on the validator’s performance, and their staked tokens help secure the network.
+   - Save the private key for the Ethereum address used to deploy the contract into `task2/public/privateKey.txt`.
 
-# References
+5. **Run the Backend:**
 
-## Remix vs Hardhat vs Truffle
+   - Open a terminal in the `task2` directory.
+   - Run `npm start` to start the backend server.
 
-https://medium.com/@arashtad/hardhat-vs-truffle-which-one-is-best-7147eb316f2d#:~:text=Additionally%2C%20Hardhat%20offers%20stack%20traces,messages%20rather%20than%20stack%20traces.
-https://theblockchainguy.dev/hardhat-vs-truffle-vs-remix
+6. **Run the Frontend:**
 
-Since this is a small project hardhat and truffle are not required. However for more complex projects it would be more suitable.
-Hardhat - stack traces
-Truffle - only error messages
+   - Open a terminal in the `task3` directory.
+   - Run `npm run dev` to start the frontend server.
 
-# EVM
+7. **MetaMask Access:**
 
-## Sepolia vs Holesky
+   - Give access to `localhost` from the MetaMask extension.
+   - If addresses are not showing, please refresh the page.
 
-https://blog.chain.link/sepolia-vs-holesky-comparison/
+8. **Interact with the Application:**
 
-Sepolia: Sepolia is the best place to test smart contracts and dApps.
-Holesky: The intent of Holesky is testing validators and staking.
+   - Choose the recipient Ethereum address from the MetaMask-connected accounts.
+   - Input a CosmosHub address in the provided input field.
 
-# Deploy
+9. **Verify Transaction:**
+   - If the transaction is successful, copy the transaction hash.
+   - Confirm the transaction on [Etherscan](https://sepolia.etherscan.io/).
 
-Got tokens from google cloud and https://faucets.chain.link/sepolia and https://www.sepoliafaucet.io/
+Following these steps ensures a smooth deployment and interaction with your blockchain application.

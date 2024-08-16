@@ -3,11 +3,10 @@ const routes = require("./app/routes.js");
 
 const app = express();
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Adjust this to your React app's origin
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // Allow preflight requests
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
@@ -17,7 +16,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up routes
 app.use("/", routes);
 
 // Handle 404 errors for undefined routes
