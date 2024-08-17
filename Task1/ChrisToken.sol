@@ -11,7 +11,7 @@ contract ChrisToken is ERC20("ChrisToken", "CG"), Ownable {
     mapping(string => address) public cosmosHubClaims;
 
     constructor(address initialOwner) Ownable(initialOwner) {
-        _mint(initialOwner, 500 * 10 ** 18); // Mint 500 tokens to the initial owner
+        _mint(initialOwner, 50 * 10 ** 18); // Mint tokens to the initial owner
     }
 
     // Faucet function that can only be called by the contract owner
